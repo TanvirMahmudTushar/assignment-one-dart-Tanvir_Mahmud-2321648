@@ -7,12 +7,13 @@
 mixin Payable {
   double calculateSalary(double baseSalary, double bonus) {
     // TODO: Calculate total salary (base + bonus)
-    return 0.0; // Placeholder - replace with actual implementation
+    return baseSalary + bonus; // Placeholder - replace with actual implementation
   }
   
   void processPayment(double amount) {
     // TODO: Process payment
     // Add your implementation here
+    print("Processing payment of \$${amount.toStringAsFixed(2)}");
   }
 }
 
@@ -21,7 +22,7 @@ mixin Payable {
 mixin Reportable {
   String generateReport(String employeeName, String department) {
     // TODO: Generate report
-    return ""; // Placeholder - replace with actual implementation
+    return "Monthly report for $employeeName in $department department"; // Placeholder - replace with actual implementation
   }
 }
 
@@ -58,19 +59,21 @@ class Manager extends Employee with Payable, Reportable {
   @override
   String getJobTitle() {
     // TODO: Return manager job title
-    return ""; // Placeholder - replace with actual implementation
+    return "Manager"; // Placeholder - replace with actual implementation
   }
   
   @override
   double getBaseSalary() {
     // TODO: Return manager base salary
-    return 0.0; // Placeholder - replace with actual implementation
+    return 8000.0; // Placeholder - replace with actual implementation
   }
   
   @override
   void displayInfo() {
     // TODO: Override to show manager-specific info
     // Add your implementation here
+    super.displayInfo();
+    print("Team Size: $teamSize");
   }
 }
 
@@ -85,19 +88,21 @@ class Developer extends Employee with Payable {
   @override
   String getJobTitle() {
     // TODO: Return developer job title
-    return ""; // Placeholder - replace with actual implementation
+    return "Senior Developer"; // Placeholder - replace with actual implementation
   }
   
   @override
   double getBaseSalary() {
     // TODO: Return developer base salary
-    return 0.0; // Placeholder - replace with actual implementation
+    return 6000.0; // Placeholder - replace with actual implementation
   }
   
   @override
   void displayInfo() {
     // TODO: Override to show developer-specific info
     // Add your implementation here
+     super.displayInfo();
+    print("Programming Language: $programmingLanguage");
   }
 }
 
@@ -113,5 +118,37 @@ void main() {
   // TODO: Demonstrate salary calculation with bonus
   
   // TODO: Display employee information
+  
+  Manager manager = Manager("Alice", "M001", "HR", 5);
+  Developer dev1 = Developer("Bob", "D001", "IT", "Dart");
+  Developer dev2 = Developer("Charlie", "D002", "IT", "Python");
+  
+  
+  double managerSalary = manager.calculateSalary(manager.getBaseSalary(), 2000.0);
+  double dev1Salary = dev1.calculateSalary(dev1.getBaseSalary(), 1000.0);
+  double dev2Salary = dev2.calculateSalary(dev2.getBaseSalary(), 1500.0);
+  
+  print("\n--- Salary Calculation ---");
+  print("${manager.name} total salary: \$${managerSalary.toStringAsFixed(2)}");
+  print("${dev1.name} total salary: \$${dev1Salary.toStringAsFixed(2)}");
+  print("${dev2.name} total salary: \$${dev2Salary.toStringAsFixed(2)}");
+  
+  
+  print("\n--- Payment Processing ---");
+  manager.processPayment(managerSalary);
+  dev1.processPayment(dev1Salary);
+  dev2.processPayment(dev2Salary);
+  
+  
+  print("\n--- Manager Report ---");
+  print(manager.generateReport(manager.name, manager.department));
+  
+  
+  print("\n--- Employee Information ---");
+  manager.displayInfo();
+  print("");
+  dev1.displayInfo();
+  print("");
+  dev2.displayInfo();
   
 }

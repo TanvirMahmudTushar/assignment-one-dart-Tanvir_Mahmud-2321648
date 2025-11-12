@@ -42,13 +42,13 @@ class Car extends Vehicle {
   @override
   void start() {
     // TODO: Implement car start method
-    print("Starting the car engine...");
+    print("Starting the car engine of $brand $model...");
   }
   
   @override
   void stop() {
     // TODO: Implement car stop method
-    print("Stopping the car engine...");
+    print("Stopping the car engine of $brand $model...");
   }
   
   @override
@@ -69,13 +69,13 @@ class Motorcycle extends Vehicle {
   @override
   void start() {
     // TODO: Implement motorcycle start method
-    print("Starting the motorcycle engine...");
+    print(" Starting the motorcycle engine of $brand $model..");
   }
   
   @override
   void stop() {
     // TODO: Implement motorcycle stop method
-    print("Stopping the motorcycle engine...");
+    print("Stopping the motorcycle engine of $brand $model...");
   }
   
   @override
